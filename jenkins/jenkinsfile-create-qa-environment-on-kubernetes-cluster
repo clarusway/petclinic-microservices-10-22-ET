@@ -35,11 +35,11 @@ pipeline {
       }
 
     post {
-        always {
+        failure {
             echo 'Tear down the Kubernetes Cluster infrastructure'
             sh """
             cd ${WORKSPACE}/infrastructure/qa-k8s-terraform
-            terraform destroy -auto-approve
+            terraform destroy -auto-approve -no-color
             """
         }
     }
